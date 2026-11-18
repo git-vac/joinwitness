@@ -1,0 +1,10 @@
+{
+  "name": "joinwitness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Regression tests for attribution across transformed security logs",
+  "bin": { "joinwitness": "./bin/joinwitness.js" },
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test", "demo": "node bin/joinwitness.js demo" }
+}

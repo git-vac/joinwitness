@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "question": "Which role session issued the credentials used for each S3 read?",
+  "eventId": "/eventID",
+  "origin": {
+    "where": { "/eventSource": "sts.amazonaws.com", "/eventName": "AssumeRole" },
+    "keys": ["/responseElements/credentials/accessKeyId"]
+  },
+  "activity": {
+    "where": { "/eventSource": "s3.amazonaws.com", "/eventName": "GetObject" },
+    "keys": ["/userIdentity/accessKeyId"]
+  },
+  "cases": [
+    { "label": "Billing export", "activity": "read-billing", "origin": "session-finance" },
+    { "label": "Build artifact", "activity": "read-build", "origin": "session-build" },
+    { "label": "Read from a session outside this replay", "activity": "read-external", "origin": null }
+  ]
+}

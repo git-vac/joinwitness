@@ -1,0 +1,31 @@
+{
+  "Records": [
+    {
+      "eventID": "session-finance", "eventTime": "2025-04-09T09:00:00Z",
+      "eventSource": "sts.amazonaws.com", "eventName": "AssumeRole",
+      "responseElements": { "credentials": { "accessKeyId": "fixture-finance-key" } }
+    },
+    {
+      "eventID": "session-build", "eventTime": "2025-04-09T09:01:00Z",
+      "eventSource": "sts.amazonaws.com", "eventName": "AssumeRole",
+      "responseElements": { "credentials": { "accessKeyId": "fixture-build-key" } }
+    },
+    {
+      "eventID": "read-billing", "eventTime": "2025-04-09T09:02:00Z",
+      "eventSource": "s3.amazonaws.com", "eventName": "GetObject",
+      "userIdentity": { "type": "AssumedRole", "accessKeyId": "fixture-finance-key" },
+      "requestParameters": { "bucketName": "example-finance", "key": "april.csv" }
+    },
+    {
+      "eventID": "read-build", "eventTime": "2025-04-09T09:03:00Z",
+      "eventSource": "s3.amazonaws.com", "eventName": "GetObject",
+      "userIdentity": { "type": "AssumedRole", "accessKeyId": "fixture-build-key" },
+      "requestParameters": { "bucketName": "example-build", "key": "artifact.zip" }
+    },
+    {
+      "eventID": "read-external", "eventTime": "2025-04-09T09:04:00Z",
+      "eventSource": "s3.amazonaws.com", "eventName": "GetObject",
+      "userIdentity": { "type": "AssumedRole", "accessKeyId": "fixture-outside-key" }
+    }
+  ]
+}
